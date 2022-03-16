@@ -20,7 +20,7 @@ let time_regex = /^(0[0-9]|1\d|2[0-3])\:(00)/;
 
 app.get("/", function (req, res) {
   res.json({
-    output: "welcome..!!!",
+    output: "welcome to my hall-booking 🥳..!!!",
   });
 });
 
@@ -49,11 +49,9 @@ app.post("/createRoom", function (req, res) {
   if (req.body.amenities) {
     room.amenities = req.body.amenities;
   } else {
-    res
-      .status(400)
-      .json({
-        output: "Please specify all Amenities for Room in Array format",
-      });
+    res.status(400).json({
+      output: "Please specify all Amenities for Room in Array format",
+    });
   }
   if (req.body.price) {
     room.price = req.body.price;
@@ -89,12 +87,10 @@ app.post("/createBooking", function (req, res) {
     if (time_regex.test(req.body.startTime)) {
       booking.startTime = req.body.startTime;
     } else {
-      res
-        .status(400)
-        .json({
-          output:
-            "Please specify time in hh:min(24-hr format) where minutes should be 00 only",
-        });
+      res.status(400).json({
+        output:
+          "Please specify time in hh:min(24-hr format) where minutes should be 00 only",
+      });
     }
   } else {
     res
@@ -106,12 +102,10 @@ app.post("/createBooking", function (req, res) {
     if (time_regex.test(req.body.endTime)) {
       booking.endTime = req.body.endTime;
     } else {
-      res
-        .status(400)
-        .json({
-          output:
-            "Please specify time in hh:min(24-hr format) where minutes should be 00 only",
-        });
+      res.status(400).json({
+        output:
+          "Please specify time in hh:min(24-hr format) where minutes should be 00 only",
+      });
     }
   } else {
     res.status(400).json({ output: "Please specify Ending time for booking." });
